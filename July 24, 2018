@@ -1,0 +1,38 @@
+July 24, 2018
+
+ - We have to follow the theme of the following link: https://lib.vt.edu/
+ - Our current site to change the theme: https://vtechworks.lib.vt.edu/
+ - GitHub link for vtechworks: https://github.com/VTUL/vtechworks
+ - The color code is in the file named "Color _ Virginia Tech.html"
+
+
+Building command for vtechworks:
+
+ - /opt/apache-ant/bin/ant -Dconfig={{ dspace_home }}/config/dspace.cfg chdir={{ ant_source_dir }} update
+
+  ant_source_dir: /var/local/vtechworks/src/dspace/dspace/target/dspace-installer
+  dspace_home: /dspace
+
+  /opt/apache-ant/bin/ant chdir={{ ant_source_dir }} update
+
+  /opt/apache-ant/bin/ant chdir=/var/local/vtechworks/src/dspace/dspace/target/dspace-installer update
+
+	/opt/apache-ant/bin/ant update
+
+
+
+Tutorial: http://www.eifl.net/system/files/resources/201605/eifl_-_05_-_adding_xmlui_mirage_2_theme.pdf
+Live Webapp Quick Changes: http://wiki.lib.sun.ac.za/index.php?title=SUNScholar/XMLUI_Theme/M2/Customisation
+
+Source path: /var/local/vtechworks/src/dspace/dspace-xmlui-mirage2/src/main/webapp/styles/_style.scss
+Live path: /dspace/webapps/xmlui/themes/Mirage2/styles/_style.scss
+Changes should go here: /var/local/vtechworks/src/dspace/dspace/modules/xmlui-mirage2/src/main/webapp/themes/Mirage2/styles
+
+Compile:
+cd /var/local/vtechworks/src/dspace/dspace/target/dspace-installer
+sudo -u vtechworks /opt/apache-ant/bin/ant update
+sudo service tomcat8 restart
+
+Create an Admin:
+sudo -u vtechworks -i
+/dspace/bin/dspace create-administrator
