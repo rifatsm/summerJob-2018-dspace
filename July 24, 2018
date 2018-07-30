@@ -28,7 +28,7 @@ Source path: /var/local/vtechworks/src/dspace/dspace-xmlui-mirage2/src/main/weba
 Live path: /dspace/webapps/xmlui/themes/Mirage2/styles/_style.scss
 Changes should go here: /var/local/vtechworks/src/dspace/dspace/modules/xmlui-mirage2/src/main/webapp/themes/Mirage2/styles
 
-Compile:
+Compile after any changes in the src/ folder:
 cd /var/local/vtechworks/src/dspace/dspace/target/dspace-installer
 sudo -u vtechworks /opt/apache-ant/bin/ant update
 sudo service tomcat8 restart

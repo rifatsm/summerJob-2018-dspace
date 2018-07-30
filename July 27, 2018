@@ -1,3 +1,63 @@
 July 27, 2018
 
 Local IP: http://192.168.60.4/
+
+Inside "vagrant ssh", $HOME/source/ => /var/local/vtechworks/src/dspace
+
+The issue with "Required metadata "dc.title"" still exists. If we set up vagrant from the scratch, sometimes this issue arises. Possible reasons: broken database while setting up the vagrant. 
+ - dump the db
+
+- Change the logo 
+Link: http://wiki.lib.sun.ac.za/index.php?title=SUNScholar/XMLUI_Theme/M2/Customisation/Logo
+$HOME/source/ == /var/local/vtechworks/src/dspace/
+ - got the latest vt logo: logo-maroon.svg
+
+logo location: /Users/rifatsm/Downloads/logo-maroon.svg
+vagrant destination: /var/local/vtechworks/src/dspace/dspace-xmlui-mirage2/src/main/webapp/images/
+
+- Get name of the running vm:
+ - vagrant status
+
+vm_name: vtlibans_dspace_vtechworksvm_1532692930760_32012 (from the virtualbox)
+vtechworksvm (from vagrant status)
+
+## Copy logo file to vagrant ssh
+ - Easiest way to copy a single file from host to Vagrant guest: https://stackoverflow.com/questions/16704059/easiest-way-to-copy-a-single-file-from-host-to-vagrant-guest
+ 	- vagrant plugin install vagrant-scp
+ 	- vagrant scp <some_local_file_or_dir> [vm_name]:<somewhere_on_the_vm>
+ 		- copy the file to the home of the vagrant ssh by:$ vagrant scp /Users/rifatsm/Downloads/logo-maroon.svg vtechworksvm:~
+ 		- log into the vagrant ssh:$ vagrant ssh
+ 		- change the permission of the file:$$ sudo chown vtechworks:vtechworks logo-maroon.svg
+ 		- move the file to the destination folder:$$ sudo mv logo-maroon.svg /var/local/vtechworks/src/dspace/dspace-xmlui-mirage2/src/main/webapp/images/
+
+## Define logo reference:
+ - log into the vagrant ssh:$ vagrant ssh
+ - go to the folder location:$$ cd /var/local/vtechworks/src/dspace/dspace-xmlui-mirage2/src/main/webapp/xsl/core/
+ - open page-structure.xsl:$$ sudo -u vtechworks nano page-structure.xsl
+ - search text "navbar-brand": CTRL + w: navbar-brand
+ - change text to "logo-maroon.svg"
+ - go to folder:$$ cd /var/local/vtechworks/src/dspace/dspace/target/dspace-installer
+ - command to compile source folder materials:$$ sudo -u vtechworks /opt/apache-ant/bin/ant update
+ - restart tomcat8:$ sudo service tomcat8 restart
+ - cd /var/local/vtechworks/webapps/xmlui/themes/Mirage2
+
+
+
+rsync -av /dspace/webapps/xmlui/themes/Mirage2/xsl/ $HOME/source/dspace-xmlui-mirage2/src/main/webapp/xsl/
+
+/Users/rifatsm
+
+## Backup and restore postgresql:
+ - http://postgresguide.com/utilities/backup-restore.html
+
+ psql -d dspace -U dspace
+
+
+
+== Nano shortcuts:
+ - Search: CTRL + w 
+
+
+   config.vm.synced_folder "bin", "/usr/local/bin", type: "rsync",
+    rsync__exclude: ".git/",
+    rsync__args: ["--verbose", "--rsync-path='sudo rsync'", "--archive", "--delete", "-z"]
