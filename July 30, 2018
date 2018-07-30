@@ -1,0 +1,13 @@
+July 30, 2018
+
+Imagebase Project:
+ - Find out where the div class="featured-content-container" is located
+ - Make changes to it to include `https://imagebase.lib.vt.edu/resources/img/imagebase_logo.jpg` logo
+
+ - (done) git clone the project 
+ - (done) Set up Xampp Apache Server
+ - Issue: I don't have the database, hence, could not run it successfully on my device.
+ 	- Alternate approach, try fixing it on the live site. (suggested by Aaron)
+ - (done) Temporary solution on the live site. 
+ 	- The outer div is possibly fixing the position of the image. A possible solution is to use a modified sized logo which matches the one with outer div. 
+ 	- Then we can use `text-align: center` to center the img. 
