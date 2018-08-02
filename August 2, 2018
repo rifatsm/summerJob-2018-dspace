@@ -1,0 +1,5 @@
+August 2, 2018
+
+ - The rsync in the Vagrant file does not work. Soumik is looking after it. 
+ - We need to design the DSpace and sync the updates manually. 
+ - 

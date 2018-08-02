@@ -1,0 +1,6 @@
+August 1, 2018
+
+- Change the banner color 
+	- http://wiki.lib.sun.ac.za/index.php?title=SUNScholar/XMLUI_Theme/M2/Customisation/Palette
+	- `nano $HOME/source/dspace-xmlui-mirage2/src/main/webapp/styles/classic_mirage_color_scheme/_bootstrap_variables.scss`
+- Change the fonts
