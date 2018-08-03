@@ -2,4 +2,13 @@ August 2, 2018
 
  - The rsync in the Vagrant file does not work. Soumik is looking after it. 
  - We need to design the DSpace and sync the updates manually. 
- - 
+	
+ - We are getting the following error msg again: `Required metadata field 'dc.title' doesn't exist!`
+ - We got new dump of the postgres db `dspace.pgsql`
+ - We imported the db using `psql -U dspace dspace < dspace.pgsql` command
+
+# Change the banner color 
+
+$HOME/source/ == /var/local/vtechworks/src/dspace/
+
+`nano $HOME/source/dspace-xmlui-mirage2/src/main/webapp/styles/classic_mirage_color_scheme/_bootstrap_variables.scss`
